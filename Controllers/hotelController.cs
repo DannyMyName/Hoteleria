@@ -18,5 +18,29 @@ namespace API_HOSPITAL.Controllers
         {
             return Ok(new csHotel().createHotel(model.hotel_name, model.hotel_address, model.hotel_phone));
         }
+        [HttpPost]
+        [Route("rest/api/updateHotel")]
+        public IHttpActionResult updateHotel(requestHotelUpdate model)
+        {
+            return Ok(new csHotel().updateHotel(model.hotel_name, model.hotel_address, model.hotel_phone, model.hotel_id));
+        }
+        [HttpPost]
+        [Route("rest/api/deleteHotel")]
+        public IHttpActionResult deleteHotel(requestHotelDelete model)
+        {
+            return Ok(new csHotel().deleteHotel(model.hotel_id));
+        }
+        [HttpGet]
+        [Route("rest/api/listHotels")]
+        public IHttpActionResult listHotels()
+        {
+            return Ok(new csHotel().getHotels());
+        }
+        [HttpGet]
+        [Route("rest/api/getHotelById")]
+        public IHttpActionResult getHotelById(int hotel_id)
+        {
+            return Ok(new csHotel().getHotelById(hotel_id));
+        }
     }
 }
